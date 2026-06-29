@@ -2,17 +2,12 @@
 
 <p align="center">
 
-<img src="https://img.shields.io/badge/Platform-Raspberry%20Pi-C51A4A?logo=raspberrypi&logoColor=white">
-
-<img src="https://img.shields.io/badge/Python-3.9+-3776AB?logo=python&logoColor=white">
-
-<img src="https://img.shields.io/badge/OpenCV-4.x-5C3EE8?logo=opencv&logoColor=white">
-
-<img src="https://img.shields.io/badge/YOLO-Ultralytics-00FFFF">
-
-<img src="https://img.shields.io/badge/TensorFlow-Lite-FF6F00?logo=tensorflow&logoColor=white">
-
-<img src="https://img.shields.io/badge/License-MIT-green">
+![Platform](https://img.shields.io/badge/Platform-Raspberry%20Pi-C51A4A?logo=raspberrypi&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3.9%2B-3776AB?logo=python&logoColor=white)
+![OpenCV](https://img.shields.io/badge/OpenCV-4.x-5C3EE8?logo=opencv&logoColor=white)
+![YOLO](https://img.shields.io/badge/YOLO-Ultralytics-00FFFF)
+![TensorFlow Lite](https://img.shields.io/badge/TensorFlow-Lite-FF6F00?logo=tensorflow&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green)
 
 </p>
 
