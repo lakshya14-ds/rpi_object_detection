@@ -1,212 +1,387 @@
-"# 🍓 Raspberry Pi Real-Time Object Detection & Tracking
+# 🍓 Raspberry Pi Real-Time Object Detection & Tracking
 
-<p align=\"center\">
-  <img src=\"https://img.shields.io/badge/Platform-Raspberry%20Pi-C51A4A?logo=raspberrypi&logoColor=white\" alt=\"Platform\">
-  <img src=\"https://img.shields.io/badge/Python-3.9%2B-3776AB?logo=python&logoColor=white\" alt=\"Python\">
-  <img src=\"https://img.shields.io/badge/OpenCV-4.x-5C3EE8?logo=opencv&logoColor=white\" alt=\"OpenCV\">
-  <img src=\"https://img.shields.io/badge/YOLO-Ultralytics-00FFFF\" alt=\"YOLO\">
-  <img src=\"https://img.shields.io/badge/TensorFlow-Lite-FF6F00?logo=tensorflow&logoColor=white\" alt=\"TFLite\">
-  <img src=\"https://img.shields.io/badge/License-MIT-green\" alt=\"License\">
+<p align="center">
+
+<img src="https://img.shields.io/badge/Platform-Raspberry%20Pi-C51A4A?logo=raspberrypi&logoColor=white">
+
+<img src="https://img.shields.io/badge/Python-3.9+-3776AB?logo=python&logoColor=white">
+
+<img src="https://img.shields.io/badge/OpenCV-4.x-5C3EE8?logo=opencv&logoColor=white">
+
+<img src="https://img.shields.io/badge/YOLO-Ultralytics-00FFFF">
+
+<img src="https://img.shields.io/badge/TensorFlow-Lite-FF6F00?logo=tensorflow&logoColor=white">
+
+<img src="https://img.shields.io/badge/License-MIT-green">
+
 </p>
 
-A collection of computer-vision modules that run **on a Raspberry Pi** (and any Linux/macOS machine with a webcam) to perform **real-time object detection, face detection, motion detection and object tracking** using OpenCV, TensorFlow Lite and YOLO (Ultralytics).
+A collection of **Computer Vision** applications built for **Raspberry Pi** using **OpenCV**, **TensorFlow Lite**, and **Ultralytics YOLO** to perform **real-time object detection, face detection, motion detection, and object tracking**.
 
-This project is a hands-on toolkit for learning practical computer vision on edge devices — from a simple camera sanity-check to deep-learning powered object detection.
+Although optimized for Raspberry Pi 4/5, every module can also run on **Linux**, **Ubuntu**, and **macOS** with any USB webcam.
 
----
-
-## ✨ Features
-
-This repository ships several **independent demos**, each in its own folder under `src/`:
-
-| Module | What it does |
-|---|---|
-| 📷 **camera-test** | Verifies the Pi/USB camera works and streams frames via OpenCV. |
-| 🙂 **face-detection** | Detects faces in the video feed (Haar cascade / DNN). |
-| 🏃 **motion-detection** | Highlights moving regions using frame-differencing / background subtraction. |
-| 🤖 **object-detection-tflite** | Runs a lightweight TensorFlow Lite model for multi-class object detection. |
-| 🧠 **object-detection-yolo** | Runs Ultralytics **YOLO** for high-accuracy object detection. |
-| 🎨 **object-tracking-color** | Tracks an object based on its HSV color signature. |
-| 🧩 **object-tracking-feature** | Feature-based tracking (keypoints / descriptors). |
-| 🔷 **object-tracking-shape** | Tracks objects by detecting geometric shapes / contours. |
-| 🛠️ **utils** | Shared helpers (FPS counter, camera wrappers, drawing utilities). |
+This repository serves as a practical toolkit for learning **Edge AI**, **Computer Vision**, and **Embedded Machine Learning**.
 
 ---
 
-## 🧰 Hardware Requirements
+# ✨ Features
 
-- **Raspberry Pi 4 / 5** (2 GB RAM minimum, 4 GB+ recommended) — *or any Linux/macOS machine*
-- **Camera**, one of:
-  - Raspberry Pi Camera Module (v1 / v2 / v3 / HQ) via the CSI ribbon, **or**
-  - USB webcam (UVC compatible)
-- microSD card with **Raspberry Pi OS (Bookworm)** flashed
-- (Optional) Active cooling — YOLO/TFLite inference will warm the SoC
-- (Optional) Display / SSH access to view the OpenCV preview window
+✔ Real-time camera streaming
+
+✔ Face Detection
+
+✔ Motion Detection
+
+✔ TensorFlow Lite Object Detection
+
+✔ YOLO Object Detection
+
+✔ Color-based Object Tracking
+
+✔ Feature-based Tracking
+
+✔ Shape Detection & Tracking
+
+✔ Modular project structure
+
+✔ Raspberry Pi & Desktop compatible
 
 ---
 
-## 📂 Project Structure
+# 📸 Demo
+
+> Add screenshots or GIFs inside the **images/** folder.
 
 ```
+images/
+│── camera_test.gif
+│── face_detection.png
+│── motion_detection.gif
+│── yolo_detection.gif
+```
+
+Example:
+
+```markdown
+![YOLO Demo](images/yolo_detection.gif)
+```
+
+---
+
+# 📦 Modules
+
+| Module | Description |
+|---------|-------------|
+| 📷 camera-test | Verifies camera connection and streams video. |
+| 🙂 face-detection | Detects faces using Haar Cascade or DNN. |
+| 🏃 motion-detection | Detects moving objects using background subtraction. |
+| 🤖 object-detection-tflite | Lightweight TensorFlow Lite object detection. |
+| 🧠 object-detection-yolo | High-accuracy object detection using Ultralytics YOLO. |
+| 🎨 object-tracking-color | HSV color-based object tracking. |
+| 🧩 object-tracking-feature | ORB/SIFT feature tracking. |
+| 🔷 object-tracking-shape | Contour and geometric shape tracking. |
+| 🛠 utils | Shared helper utilities. |
+
+---
+
+# 🧰 Hardware Requirements
+
+- Raspberry Pi 4 (2GB+)
+- Raspberry Pi 5 (Recommended)
+- Raspberry Pi Camera Module
+- USB Webcam
+- Raspberry Pi OS Bookworm (64-bit)
+- Active cooling (recommended)
+
+Desktop users only need:
+
+- Linux
+- Ubuntu
+- macOS
+- USB webcam
+
+---
+
+# 📂 Project Structure
+
+```text
 rpi_object_detection/
-├── images/                          # Demo images & screenshots
+│
+├── images/
+│
 ├── src/
-│   ├── camera-test/                 # Basic camera streaming test
-│   ├── face-detection/              # Real-time face detection
-│   ├── motion-detection/            # Motion / background subtraction
-│   ├── object-detection-tflite/     # Object detection w/ TensorFlow Lite
-│   ├── object-detection-yolo/       # Object detection w/ Ultralytics YOLO
-│   ├── object-tracking-color/       # Color-based tracking (HSV)
-│   ├── object-tracking-feature/     # Feature-based tracking
-│   ├── object-tracking-shape/       # Shape / contour-based tracking
-│   └── utils/                       # Shared utilities (camera, FPS, drawing)
-├── install.sh                       # One-shot environment setup
-├── requirements.txt                 # Python dependencies
+│   ├── camera-test/
+│   ├── face-detection/
+│   ├── motion-detection/
+│   ├── object-detection-tflite/
+│   ├── object-detection-yolo/
+│   ├── object-tracking-color/
+│   ├── object-tracking-feature/
+│   ├── object-tracking-shape/
+│   └── utils/
+│
+├── install.sh
+├── requirements.txt
+├── LICENSE
 └── README.md
 ```
 
 ---
 
-## 🚀 Quick Start
+# 🚀 Installation
 
-### 1. Clone the repository
+Clone the repository.
 
 ```bash
 git clone https://github.com/lakshya14-ds/rpi_object_detection.git
+
 cd rpi_object_detection
 ```
 
-### 2. Run the install script
-
-The provided `install.sh` will:
-
-- Update apt and install system libraries (`libopencv-dev`, `libatlas-base-dev`, `python3-venv`, `python3-pip`)
-- Create a Python virtual environment at `./venv`
-  - On Raspberry Pi it uses `--system-site-packages` so that **`libcamera` / `picamera2`** (preinstalled by Raspberry Pi OS) remain available inside the venv
-- Install all Python dependencies from `requirements.txt`
+Run the installer.
 
 ```bash
 chmod +x install.sh
+
 ./install.sh
 ```
 
-### 3. Activate the virtual environment
+Activate the virtual environment.
 
 ```bash
 source venv/bin/activate
 ```
 
-> 💡 You only run `install.sh` once. After that, just `source venv/bin/activate` whenever you open a new terminal.
-
 ---
 
-## 🧪 Manual Installation (alternative)
-
-If you prefer to set things up by hand:
+# 🛠 Manual Installation
 
 ```bash
-# System packages (Debian/Raspberry Pi OS / Ubuntu)
-sudo apt-get update
-sudo apt-get install -y libopencv-dev libatlas-base-dev python3-venv python3-pip
+sudo apt update
 
-# Python env
-python3 -m venv --system-site-packages venv   # drop --system-site-packages on non-Pi
+sudo apt install -y \
+libopencv-dev \
+libatlas-base-dev \
+python3-pip \
+python3-venv
+```
+
+Create a virtual environment.
+
+```bash
+python3 -m venv --system-site-packages venv
+
 source venv/bin/activate
-pip install --upgrade pip setuptools wheel
+```
+
+Install Python packages.
+
+```bash
+pip install --upgrade pip
+
 pip install -r requirements.txt
 ```
 
-### Python dependencies (`requirements.txt`)
+---
+
+# 📦 Python Dependencies
 
 ```
-matplotlib
-numpy
-opencv-contrib-python
 opencv-python
-packaging
-pillow
-pyparsing
-python-dateutil
+opencv-contrib-python
+numpy
 scipy
-six
+matplotlib
+pillow
 ultralytics
+packaging
+python-dateutil
+pyparsing
+six
 ```
 
 ---
 
-## ▶️ Running the Demos
+# ▶ Running the Applications
 
-Each module is a self-contained Python script. After activating the venv, run any demo from the project root, e.g.:
+Camera Test
 
 ```bash
-# Sanity-check the camera
 python src/camera-test/camera_test.py
+```
 
-# Real-time face detection
+Face Detection
+
+```bash
 python src/face-detection/face_detection.py
+```
 
-# Motion detection
+Motion Detection
+
+```bash
 python src/motion-detection/motion_detection.py
+```
 
-# TFLite object detection
+TensorFlow Lite Detection
+
+```bash
 python src/object-detection-tflite/object_detection_tflite.py
+```
 
-# YOLO object detection (Ultralytics)
+YOLO Detection
+
+```bash
 python src/object-detection-yolo/object_detection_yolo.py
+```
 
-# Object tracking variants
+Color Tracking
+
+```bash
 python src/object-tracking-color/color_tracking.py
+```
+
+Feature Tracking
+
+```bash
 python src/object-tracking-feature/feature_tracking.py
+```
+
+Shape Tracking
+
+```bash
 python src/object-tracking-shape/shape_tracking.py
 ```
 
-> 📌 The exact script filenames may differ slightly inside each folder — open the folder and run the `.py` file you find there. Press **`q`** in the preview window to quit.
+---
+
+# 🎮 Keyboard Controls
+
+| Key | Action |
+|------|--------|
+| q | Quit application |
+| Esc | Exit (if implemented) |
+| Space | Pause (optional) |
 
 ---
 
-## ⚙️ How It Works (in a nutshell)
+# 🧠 Deep Learning Models
 
-- **OpenCV** captures frames from the camera, handles drawing and the preview window.
-- **`picamera2` / `libcamera`** (on Raspberry Pi) provides a modern camera backend; on non-Pi systems OpenCV falls back to the standard webcam driver.
-- **Classical CV** demos (motion / color / shape / feature tracking) rely on thresholding, contour analysis, optical flow and keypoint descriptors from OpenCV.
-- **Deep-learning** demos use:
-  - **TensorFlow Lite** for a small, fast multi-class detector that runs comfortably on a Pi.
-  - **Ultralytics YOLO** for higher-accuracy detection (great on Pi 5 / desktop; usable on Pi 4).
+TensorFlow Lite supports lightweight object detection.
 
----
+YOLO supports:
 
-## 🩺 Troubleshooting
+- YOLOv8n
+- YOLOv8s
+- YOLOv11n
+- Custom trained models
 
-| Problem | Fix |
-|---|---|
-| `ModuleNotFoundError: picamera2` | Make sure the venv was created with `--system-site-packages` *and* you're on Raspberry Pi OS. |
-| Black/garbled preview window | Try a different camera index (`cv2.VideoCapture(0)` → `1`) or check the CSI ribbon orientation. |
-| `Illegal instruction` on Pi | You may be on an older OS / 32-bit build — use Raspberry Pi OS Bookworm 64-bit. |
-| YOLO is very slow | Use a smaller variant (e.g. `yolov8n.pt`), reduce input resolution, or run on Pi 5. |
-| `qt.qpa.xcb: could not connect to display` | Run on the Pi desktop, or enable X-forwarding: `ssh -X pi@raspberrypi.local`. |
+Example:
+
+```python
+model = YOLO("yolov8n.pt")
+```
 
 ---
 
-## 🗺️ Roadmap / Ideas
+# ⚙ How It Works
 
-- [ ] Add a unified CLI (`python -m rpi_od <demo>`) to launch any module
-- [ ] Stream the annotated video over HTTP / MJPEG
-- [ ] Record detections to disk with timestamps
-- [ ] Add Coral USB Accelerator support for TFLite
-- [ ] Benchmark FPS table across Pi 4 / Pi 5 / desktop
+### OpenCV
+
+- Camera capture
+- Image processing
+- Drawing bounding boxes
+- Video display
+
+### TensorFlow Lite
+
+- Lightweight inference
+- Fast edge deployment
+- Low memory usage
+
+### YOLO
+
+- High accuracy
+- Multiple object classes
+- Bounding boxes
+- Confidence scores
+
+### Tracking Algorithms
+
+- HSV Thresholding
+- Background Subtraction
+- Contour Detection
+- Optical Flow
+- ORB/SIFT Feature Matching
 
 ---
 
-## 🙏 Acknowledgements
+# 📊 Expected Performance
 
-- Inspired by [`automaticdai/rpi-object-detection`](https://github.com/automaticdai/rpi-object-detection) (referenced in `install.sh`).
-- [OpenCV](https://opencv.org/) and [Ultralytics YOLO](https://github.com/ultralytics/ultralytics) for the underlying CV/ML stacks.
-- The Raspberry Pi Foundation for `libcamera` & `picamera2`.
+| Device | Camera | YOLOv8n FPS |
+|---------|--------|-------------|
+| Raspberry Pi 4 | 640×480 | 5–10 FPS |
+| Raspberry Pi 5 | 640×480 | 12–20 FPS |
+| Desktop CPU | 640×480 | 20–40 FPS |
+| Desktop GPU | 640×480 | 60+ FPS |
+
+*Performance depends on model size, resolution, and hardware configuration.*
 
 ---
 
-## 📜 License
+# 🩺 Troubleshooting
 
-Released under the **MIT License**. See `LICENSE` for details (add one if missing).
+| Problem | Solution |
+|----------|----------|
+| ModuleNotFoundError: picamera2 | Create venv using `--system-site-packages`. |
+| Camera not detected | Try changing `VideoCapture(0)` to `VideoCapture(1)`. |
+| Black screen | Verify CSI cable orientation or USB webcam permissions. |
+| Illegal instruction | Use Raspberry Pi OS Bookworm (64-bit). |
+| YOLO slow | Use `yolov8n.pt` or reduce resolution. |
+| Qt display error | Run with desktop session or use SSH X-forwarding. |
 
 ---
+
+# 🛣 Roadmap
+
+- [ ] Unified CLI launcher
+- [ ] MJPEG video streaming
+- [ ] Video recording
+- [ ] Detection logging
+- [ ] Coral TPU support
+- [ ] ONNX Runtime support
+- [ ] Multi-object tracking (DeepSORT)
+- [ ] Web dashboard
+- [ ] FPS benchmarking
+
+---
+
+# 🤝 Contributing
+
+Contributions are welcome.
+
+1. Fork the repository.
+2. Create a feature branch.
+3. Commit your changes.
+4. Push the branch.
+5. Open a Pull Request.
+
+---
+
+# 🙏 Acknowledgements
+
+- Raspberry Pi Foundation
+- OpenCV
+- Ultralytics
+- TensorFlow Lite
+
+Inspired by:
+
+https://github.com/automaticdai/rpi-object-detection
+
+---
+
+# 📜 License
+
+This project is released under the **MIT License**.
+
+Feel free to use, modify, and distribute it for educational and commercial purposes.
